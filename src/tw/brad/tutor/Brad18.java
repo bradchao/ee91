@@ -20,8 +20,11 @@ public class Brad18 {
 
     }
 
-    static void m1(Bike bike){
-        bike.upSpeed();
+    static void m2(int a){
+
+    }
+    static void m1(Bike b){
+        b.upSpeed();
     }
 
 
