@@ -21,4 +21,9 @@ public class Scooter extends Bike{
         speed = speed < 1? 1: speed * 1.7 * gear;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return String.format("speed: %f, gear = %d", speed, gear);
+    }
 }
