@@ -17,7 +17,7 @@ public class Brad11 {
             }
         }
         if (p0 > 0){
-            System.out.println("ERROR");
+            System.out.println("ERROR1");
         }else {
             System.out.printf("1點出現 %d 次\n", p1);
             System.out.printf("2點出現 %d 次\n", p2);
