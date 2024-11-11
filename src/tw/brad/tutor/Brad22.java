@@ -18,10 +18,13 @@ public class Brad22 {
         TWId id5 = TWId.createTWId("A123456787");
         
         System.out.println(id1);
-        System.out.println(id2);
+        System.out.println(id2.getId());
         System.out.println(id3);
         System.out.println(id4);
         System.out.println(id5);
+        System.out.println("----");
+        System.out.println(TWId.letters);
+        System.out.println(Math.PI);
         
         
     }

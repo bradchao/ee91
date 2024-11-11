@@ -2,7 +2,7 @@ package tw.brad.apis;
 
 import java.util.Random;
 
-public class TWId {
+public class TWId extends Object{
     private String id;
     public static String letters = "ABCDEFGHJKLMNPQRSTUVXYWZIO";
 
@@ -53,7 +53,6 @@ public class TWId {
     	return true;
     }
     
-    @Override
     public String toString() {
     	return id;
     }
