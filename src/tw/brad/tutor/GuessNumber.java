@@ -65,6 +65,7 @@ public class GuessNumber extends JFrame implements ActionListener{
 	}
 	
 	private String checkAB(String g) {
+		
 		return "1A2B";
 	}
 	
