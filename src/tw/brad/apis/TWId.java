@@ -21,7 +21,7 @@ public class TWId {
 
     public static boolean isRight(String id){
         boolean isRight = false;
-        String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String letters = "ABCDEFGHJKLMNPQRSTUVXYWZIO";
 //        if (id.length() == 10){
 //            char c1 = id.charAt(0);
 //            if (letters.indexOf(c1) != -1){
@@ -32,7 +32,15 @@ public class TWId {
 //        }
 
         if (id.matches("[A-Z][12][0-9]{8}")){
-            isRight = true;
+            //isRight = true;
+        	char c1 = id.charAt(0);
+        	int a12 = letters.indexOf(c1) + 10;
+        	int a1 = a12 / 10;
+        	int a2 = a12 % 10;
+        	//System.out.printf("a1 = %d, a2 = %d", a1, a2);
+        	
+        	
+        	
         }
 
         return isRight;
