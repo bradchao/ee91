@@ -4,15 +4,16 @@ import java.util.Random;
 
 public class TWId {
     private String id;
+    public static String letters = "ABCDEFGHJKLMNPQRSTUVXYWZIO";
 
     public TWId(){
         this((int)(Math.random()*2)==0);
     }
     public TWId(boolean isMale){
-        this(isMale, 'A');
+        this(isMale, letters.charAt(new Random().nextInt(26)));
     }
     public TWId(char area){
-        this((int)(Math.random()*2)==0, 'A');
+        this((int)(Math.random()*2)==0, area);
     }
     public TWId(boolean isMale, char area){
     	StringBuffer sb = new StringBuffer();
@@ -32,10 +33,33 @@ public class TWId {
     private TWId(String id){
         this.id = id;
     }
+    
+    public static TWId createTWId(String id) {
+    	if (isRight(id)) {
+    		return new TWId(id);
+    	}else {
+    		return null;
+    	}
+    }
+    
+    public String getId() {
+    	return id;
+    }
+    
+    public String getArea() {
+    	return "台中市";
+    }
+    public boolean isMale() {
+    	return true;
+    }
+    
+    @Override
+    public String toString() {
+    	return id;
+    }
 
     public static boolean isRight(String id){
         boolean isRight = false;
-        String letters = "ABCDEFGHJKLMNPQRSTUVXYWZIO";
 //        if (id.length() == 10){
 //            char c1 = id.charAt(0);
 //            if (letters.indexOf(c1) != -1){
