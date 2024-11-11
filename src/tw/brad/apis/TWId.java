@@ -1,5 +1,7 @@
 package tw.brad.apis;
 
+import java.util.Random;
+
 public class TWId {
     private String id;
 
@@ -13,8 +15,20 @@ public class TWId {
         this((int)(Math.random()*2)==0, 'A');
     }
     public TWId(boolean isMale, char area){
-
+    	StringBuffer sb = new StringBuffer();
+    	sb.append(area);
+    	sb.append(isMale?'1':'2');
+    	for (int i=0; i<7; i++) sb.append(new Random().nextInt(10));
+    	
+    	for (int i=0; i<10; i++) {
+    		if (isRight(sb.toString() + i)) {
+    			id = sb.toString() + i;
+    			break;
+    		}
+    	}
+    	
     }
+    //---------------------------------
     private TWId(String id){
         this.id = id;
     }
