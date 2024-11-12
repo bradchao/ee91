@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-public class Brad28 extends JFrame{
+public class Brad28 extends JFrame  implements ActionListener{
 	private JButton b1, b2, b3;
 	private int counter;
 	
@@ -23,7 +23,7 @@ public class Brad28 extends JFrame{
 		setSize(640, 480);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
-		initEvent();
+		this.initEvent();
 	}
 	
 	private void initEvent() {
@@ -31,6 +31,33 @@ public class Brad28 extends JFrame{
 		b1.addActionListener(listener);
 		b2.addActionListener(listener);
 		b3.addActionListener(listener);
+		
+		b1.addActionListener(this);
+		b2.addActionListener(this);
+		b3.addActionListener(this);
+		
+		b1.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				counter++;
+				System.out.println("3");
+			}
+		});
+		
+		b2.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				counter += 2;
+			}
+		});
+		
+		b3.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				counter += 3;
+			}
+		});
+		
 	}
 	
 	public JButton getB1() {return b1;}
@@ -42,9 +69,27 @@ public class Brad28 extends JFrame{
 		new Brad28();
 	}
 
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == b1) {
+			System.out.println("B1");
+			counter++;
+			System.out.println("2");
+		}else if (e.getSource() == b2) {
+			System.out.println("B2");
+			counter += 2;
+		}else if (e.getSource() == b3) {
+			System.out.println("B3");
+			counter += 3;
+		}		
+	}
+
 }
+
+
 class MyListener2 implements ActionListener {
 	private Brad28 brad28;
+	
 	public MyListener2(Brad28 brad28) {
 		this.brad28 = brad28;
 	}
@@ -55,6 +100,7 @@ class MyListener2 implements ActionListener {
 		if (e.getSource() == brad28.getB1()) {
 			System.out.println("B1");
 			brad28.addCounter(1);
+			System.out.println("1");
 		}else if (e.getSource() == brad28.getB2()) {
 			System.out.println("B2");
 			brad28.addCounter(2);
