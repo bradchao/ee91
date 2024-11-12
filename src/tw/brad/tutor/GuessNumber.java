@@ -53,7 +53,7 @@ public class GuessNumber extends JFrame implements ActionListener{
 		d = 4;
 		answer = createAnswer();
 		counter = 0;
-		log.setText("");
+		log.setText(" ");
 		//System.out.println(answer);
 	}
 	
