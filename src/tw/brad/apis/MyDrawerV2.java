@@ -88,7 +88,9 @@ public class MyDrawerV2 extends JPanel{
 		}
 		
 	}
-	
+	public void changeColor(Color newColor) {
+		nowColor = newColor;
+	}
 }
 
 
