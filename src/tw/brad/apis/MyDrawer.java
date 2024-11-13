@@ -13,7 +13,7 @@ import javax.swing.DebugGraphics;
 import javax.swing.JPanel;
 
 public class MyDrawer extends JPanel{
-	private LinkedList<LinkedList<HashMap<String, Integer>>> lines;
+	private LinkedList<LinkedList<HashMap<String, Integer>>> lines, recycle;
 	
 	public MyDrawer() {
 		setBackground(Color.YELLOW);
@@ -21,6 +21,7 @@ public class MyDrawer extends JPanel{
 		addMouseListener(listener);
 		addMouseMotionListener(listener);
 		lines = new LinkedList<>();
+		recycle = new LinkedList<>();
 	}
 	
 	@Override
@@ -46,8 +47,7 @@ public class MyDrawer extends JPanel{
 	private class MyListener extends MouseAdapter{
 		@Override
 		public void mousePressed(MouseEvent e) {
-			System.out.println(String.format("Press: %d, %d", e.getX(), e.getY()));
-			
+			recycle.clear();
 			LinkedList<HashMap<String, Integer>> line = new LinkedList<HashMap<String,Integer>>();
 			
 			HashMap<String, Integer> point = new HashMap<String, Integer>();
@@ -62,19 +62,37 @@ public class MyDrawer extends JPanel{
 		
 		@Override
 		public void mouseDragged(MouseEvent e) {
-			System.out.println(String.format("Drag: %d, %d", e.getX(), e.getY()));
-			
 			HashMap<String, Integer> point = new HashMap<String, Integer>();
 			point.put("x", e.getX());
 			point.put("y", e.getY());
 			
 			lines.getLast().add(point);
+			//lines.get(lines.size()-1).add(point);
 
 			repaint();
 		}
 		
 	}	
 	
+	public void clear() {
+		lines.clear();
+		repaint();
+	}
+	
+	public void undo() {
+		if (lines.size()>0) {
+			LinkedList<HashMap<String, Integer>> line = lines.removeLast(); 
+			recycle.add(line);
+			repaint();
+		}
+	}
+	public void redo() {
+		if (recycle.size()>0) {
+			lines.add(recycle.removeLast());
+			repaint();
+		}
+		
+	}
 	
 }
 
