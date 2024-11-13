@@ -13,7 +13,8 @@ import javax.swing.DebugGraphics;
 import javax.swing.JPanel;
 
 public class MyDrawerV2 extends JPanel{
-	private LinkedList<LinkedList<HashMap<String, Integer>>> lines, recycle;
+	private LinkedList<Line> lines, recycle;
+	private Color nowColor;
 	
 	public MyDrawerV2() {
 		setBackground(Color.YELLOW);
@@ -22,6 +23,7 @@ public class MyDrawerV2 extends JPanel{
 		addMouseMotionListener(listener);
 		lines = new LinkedList<>();
 		recycle = new LinkedList<>();
+		nowColor = Color.BLUE;
 	}
 	
 	@Override
@@ -30,15 +32,15 @@ public class MyDrawerV2 extends JPanel{
 
 		Graphics2D g2d = (Graphics2D)g;
 		
-		g2d.setColor(Color.BLUE);
+		g2d.setColor(nowColor);
 		g2d.setStroke(new BasicStroke(4));
 		
-		for(LinkedList<HashMap<String, Integer>> line : lines) {
+		for(Line line : lines) {
 			
-			for (int i= 1; i<line.size(); i++) {
-				HashMap<String, Integer> p0 = line.get(i-1);
-				HashMap<String, Integer> p1 = line.get(i);
-				g2d.drawLine(p0.get("x"), p0.get("y"), p1.get("x"), p1.get("y"));
+			for (int i= 1; i<line.getSize(); i++) {
+				Point p0 = line.getPoint(i-1);
+				Point p1 = line.getPoint(i);
+				g2d.drawLine(p0.getX(), p0.getY(), p1.getX(), p1.getY());
 			}
 			
 		}
@@ -49,13 +51,10 @@ public class MyDrawerV2 extends JPanel{
 		@Override
 		public void mousePressed(MouseEvent e) {
 			recycle.clear();
-			LinkedList<HashMap<String, Integer>> line = new LinkedList<HashMap<String,Integer>>();
+			Line line = new Line(nowColor, 4);
+			Point point = new Point(e.getX(), e.getY());
 			
-			HashMap<String, Integer> point = new HashMap<String, Integer>();
-			point.put("x", e.getX());
-			point.put("y", e.getY());
-			
-			line.add(point);
+			line.addPoint(point);
 			
 			lines.add(line);
 			
@@ -63,12 +62,8 @@ public class MyDrawerV2 extends JPanel{
 		
 		@Override
 		public void mouseDragged(MouseEvent e) {
-			HashMap<String, Integer> point = new HashMap<String, Integer>();
-			point.put("x", e.getX());
-			point.put("y", e.getY());
-			
-			lines.getLast().add(point);
-			//lines.get(lines.size()-1).add(point);
+			Point point = new Point(e.getX(), e.getY());
+			lines.getLast().addPoint(point);
 
 			repaint();
 		}
@@ -82,8 +77,7 @@ public class MyDrawerV2 extends JPanel{
 	
 	public void undo() {
 		if (lines.size()>0) {
-			LinkedList<HashMap<String, Integer>> line = lines.removeLast(); 
-			recycle.add(line);
+			recycle.add(lines.removeLast());
 			repaint();
 		}
 	}

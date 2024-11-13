@@ -10,16 +10,17 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import tw.brad.apis.MyDrawer;
+import tw.brad.apis.MyDrawerV2;
 
 public class MySign extends JFrame{
-	private MyDrawer myDrawer;
+	private MyDrawerV2 myDrawer;
 	private JButton clear, undo, redo;
 	
 	public MySign() {
 		super("簽名");
 		
 		setLayout(new BorderLayout());
-		myDrawer = new MyDrawer();
+		myDrawer = new MyDrawerV2();
 		add(myDrawer, BorderLayout.CENTER);
 		
 		clear = new JButton("清除");
