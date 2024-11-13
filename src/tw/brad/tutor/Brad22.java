@@ -15,13 +15,13 @@ public class Brad22 {
         TWId id2 = new TWId(true);
         TWId id3 = new TWId('T');
         TWId id4 = new TWId(false, 'B');
-        TWId id5 = TWId.createTWId("A123456787");
+        //TWId id5 = TWId.createTWId("A123456787");
         
         System.out.println(id1);
         System.out.println(id2.getId());
         System.out.println(id3);
         System.out.println(id4);
-        System.out.println(id5);
+        //System.out.println(id5);
         System.out.println("----");
         System.out.println(TWId.letters);
         System.out.println(Math.PI);
