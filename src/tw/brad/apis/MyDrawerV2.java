@@ -12,10 +12,10 @@ import java.util.LinkedList;
 import javax.swing.DebugGraphics;
 import javax.swing.JPanel;
 
-public class MyDrawer extends JPanel{
+public class MyDrawerV2 extends JPanel{
 	private LinkedList<LinkedList<HashMap<String, Integer>>> lines, recycle;
 	
-	public MyDrawer() {
+	public MyDrawerV2() {
 		setBackground(Color.YELLOW);
 		MyListener listener = new MyListener();
 		addMouseListener(listener);
