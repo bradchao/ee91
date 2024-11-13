@@ -32,10 +32,9 @@ public class MyDrawerV2 extends JPanel{
 
 		Graphics2D g2d = (Graphics2D)g;
 		
-		g2d.setColor(nowColor);
-		g2d.setStroke(new BasicStroke(4));
-		
 		for(Line line : lines) {
+			g2d.setColor(line.getColor());
+			g2d.setStroke(new BasicStroke(line.getWidth()));
 			
 			for (int i= 1; i<line.getSize(); i++) {
 				Point p0 = line.getPoint(i-1);
@@ -88,9 +87,14 @@ public class MyDrawerV2 extends JPanel{
 		}
 		
 	}
-	public void changeColor(Color newColor) {
+	public void setColor(Color newColor) {
 		nowColor = newColor;
 	}
+	
+	public Color getColor() {
+		return nowColor;
+	}
+
 }
 
 
