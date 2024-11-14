@@ -2,17 +2,16 @@ package tw.brad.tutor;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 
-public class Brad39 {
+public class Brad42 {
 
 	public static void main(String[] args) {
-		try (FileInputStream fin = new FileInputStream("dir1/file1.txt");){
-			int len; byte[] buf = new byte[3];
-			
-			while ( (len = fin.read(buf)) != -1 ) {
-				String str = new String(buf,0,len);
-				System.out.print(str);
+		try (FileReader fin = new FileReader("dir1/file1.txt");){
+			int c;
+			while ( (c = fin.read()) != -1 ) {
+				System.out.print((char)c);
 			}
 			
 			System.out.println();

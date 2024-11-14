@@ -5,9 +5,9 @@ import java.io.FileOutputStream;
 public class Brad41 {
 
 	public static void main(String[] args) {
-		String mesg = "Hello, World";
+		String mesg = "abcdefg";
 		
-		try(FileOutputStream fout = new FileOutputStream("dir1/file2.txt")){
+		try(FileOutputStream fout = new FileOutputStream("dir1/file2.txt", true)){
 			
 			fout.write(mesg.getBytes());
 			
