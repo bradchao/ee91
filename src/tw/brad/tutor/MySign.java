@@ -18,7 +18,8 @@ import tw.brad.apis.MyDrawerV2;
 
 public class MySign extends JFrame{
 	private MyDrawerV2 myDrawer;
-	private JButton clear, undo, redo, color, saveJpeg;
+	private JButton clear, undo, redo, color, 
+			saveJpeg, saveObj, loadObj;
 	
 	public MySign() {
 		super("簽名");
@@ -32,10 +33,12 @@ public class MySign extends JFrame{
 		redo = new JButton("下一步");
 		color = new JButton("改色");
 		saveJpeg = new JButton("存檔");
+		saveObj = new JButton("序列");
+		loadObj = new JButton("解序");
 		
 		JPanel top = new JPanel(new FlowLayout());
 		top.add(clear);top.add(undo);top.add(redo);top.add(color);
-		top.add(saveJpeg);
+		top.add(saveJpeg); top.add(saveObj); top.add(loadObj);
 		
 		add(top, BorderLayout.NORTH);
 		
@@ -78,6 +81,19 @@ public class MySign extends JFrame{
 				saveJpeg();
 			}
 		});
+		
+		saveObj.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				saveObject();
+			}
+		});
+		loadObj.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				loadObject();
+			}
+		});
 	}
 	
 	private void changeColor() {
@@ -99,6 +115,24 @@ public class MySign extends JFrame{
 			}
 		}
 		
+	}
+	
+	private void saveObject() {
+		try {
+			myDrawer.saveLines(new File("dir1/lines.ok"));
+			System.out.println("OK");
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+	
+	private void loadObject() {
+		try {
+			myDrawer.loadLines(new File("dir1/lines.ok"));
+			System.out.println("OK");
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 	}
 	
 	

@@ -8,7 +8,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.LinkedList;
 
 import javax.imageio.ImageIO;
@@ -111,6 +115,21 @@ public class MyDrawerV2 extends JPanel{
 			throw new Exception();
 		}
 		
+	}
+	
+	public void saveLines(File saveFile) throws Exception {
+		try(ObjectOutputStream oout = new ObjectOutputStream(new FileOutputStream(saveFile))){
+			oout.writeObject(lines);
+			oout.flush();
+		}
+	}
+	
+	public void loadLines(File loadFile) throws Exception {
+		try(ObjectInputStream oin = new ObjectInputStream(new FileInputStream(loadFile))){
+			lines = (LinkedList<Line>)oin.readObject();
+			recycle.clear();
+			repaint();
+		}
 	}
 
 }
