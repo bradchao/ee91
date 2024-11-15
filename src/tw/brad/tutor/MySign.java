@@ -15,7 +15,7 @@ import tw.brad.apis.MyDrawerV2;
 
 public class MySign extends JFrame{
 	private MyDrawerV2 myDrawer;
-	private JButton clear, undo, redo, color;
+	private JButton clear, undo, redo, color, saveJpeg;
 	
 	public MySign() {
 		super("簽名");
@@ -28,9 +28,11 @@ public class MySign extends JFrame{
 		undo = new JButton("上一步");
 		redo = new JButton("下一步");
 		color = new JButton("改色");
+		saveJpeg = new JButton("存檔");
 		
 		JPanel top = new JPanel(new FlowLayout());
 		top.add(clear);top.add(undo);top.add(redo);top.add(color);
+		top.add(saveJpeg);
 		
 		add(top, BorderLayout.NORTH);
 		
@@ -65,6 +67,12 @@ public class MySign extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				changeColor();
+			}
+		});
+		saveJpeg.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				myDrawer.saveJPEG();
 			}
 		});
 	}

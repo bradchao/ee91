@@ -11,6 +11,7 @@ public class Brad45 {
 		File source = new File("dir1/coffee.jpg");
 		File target = new File("dir4/brad.jpg");
 		try (FileInputStream fin = new FileInputStream(source);
+				
 				FileOutputStream fout = new FileOutputStream(target);){
 			
 			byte[] buf = new byte[4*1024];

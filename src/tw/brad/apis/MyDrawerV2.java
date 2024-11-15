@@ -6,10 +6,12 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.HashMap;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.LinkedList;
 
-import javax.swing.DebugGraphics;
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 public class MyDrawerV2 extends JPanel{
@@ -93,6 +95,19 @@ public class MyDrawerV2 extends JPanel{
 	
 	public Color getColor() {
 		return nowColor;
+	}
+	
+	public void saveJPEG() {
+		BufferedImage img = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
+		Graphics2D g = (Graphics2D)img.getGraphics();
+		paint(g);
+		try {
+			ImageIO.write(img, "jpg", new File("dir1/brad.jpg"));
+			System.out.println("save ok");
+		} catch (IOException e) {
+			System.out.println(e);
+		}
+		
 	}
 
 }
