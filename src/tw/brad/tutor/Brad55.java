@@ -9,7 +9,7 @@ import java.net.Socket;
 
 public class Brad55 {
 	public static void main(String[] args) {
-		File source = new File("");
+		File source = new File("dir1/brad.jpg");
 		try {
 			BufferedInputStream bin = new BufferedInputStream(
 					new FileInputStream(source));
