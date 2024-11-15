@@ -11,10 +11,11 @@ public class Brad46 {
 		try (FileReader fr = new FileReader("dir1/ns1hosp.csv");
 			BufferedReader reader = new BufferedReader(fr);){
 			
-			String line;
+			String line; int i = 0;
 			while ( (line = reader.readLine()) != null) {
-				String[] data = line.split(",");
-				System.out.println(data[2]);
+//				String[] data = line.split(",");
+//				System.out.printf("%d. %s\n", ++i, data[2]);
+				System.out.printf("%d. %s\n", ++i, line);
 			}
 			
 		}catch(Exception e) {
