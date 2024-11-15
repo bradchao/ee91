@@ -97,15 +97,18 @@ public class MyDrawerV2 extends JPanel{
 		return nowColor;
 	}
 	
-	public void saveJPEG() {
+	public boolean saveJPEG(File saveFile) throws Exception {
 		BufferedImage img = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
 		Graphics2D g = (Graphics2D)img.getGraphics();
 		paint(g);
 		try {
-			ImageIO.write(img, "jpg", new File("dir1/brad.jpg"));
-			System.out.println("save ok");
+			if (ImageIO.write(img, "jpg", saveFile)) {
+				return true;
+			}else {
+				throw new Exception();
+			}
 		} catch (IOException e) {
-			System.out.println(e);
+			throw new Exception();
 		}
 		
 	}

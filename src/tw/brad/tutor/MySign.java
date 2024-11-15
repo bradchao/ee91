@@ -5,10 +5,13 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import tw.brad.apis.MyDrawerV2;
@@ -72,7 +75,7 @@ public class MySign extends JFrame{
 		saveJpeg.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				myDrawer.saveJPEG();
+				saveJpeg();
 			}
 		});
 	}
@@ -83,6 +86,21 @@ public class MySign extends JFrame{
 			myDrawer.setColor(newColor);
 		}
 	}
+	
+	private void saveJpeg() {
+		JFileChooser jfc = new JFileChooser();
+		if (jfc.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
+			File saveFile = jfc.getSelectedFile();
+			try {
+				myDrawer.saveJPEG(saveFile);
+				JOptionPane.showMessageDialog(this, "Save Success");
+			} catch (Exception e) {
+				JOptionPane.showMessageDialog(this, "Save Failure");
+			}
+		}
+		
+	}
+	
 	
 	public static void main(String[] args) {
 		new MySign();
