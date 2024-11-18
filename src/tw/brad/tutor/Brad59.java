@@ -11,9 +11,9 @@ import java.net.URL;
 public class Brad59 {
 
 	public static void main(String[] args) {
-		String urlString ="https://www.ispan.com.tw/";
+		String urlString ="https://www.gamer.com.tw/";
 		try {
-			URL url = new URL(String.format("https://pdfmyurl.com/?url=", urlString));
+			URL url = new URL(String.format("https://pdfmyurl.com/?url=%s", urlString));
 			HttpURLConnection conn = (HttpURLConnection)url.openConnection();
 			
 			BufferedOutputStream bout = 
