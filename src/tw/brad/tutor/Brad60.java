@@ -5,6 +5,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 public class Brad60 {
 
 	public static void main(String[] args) {
@@ -22,11 +25,30 @@ public class Brad60 {
 			}
 			reader.close();
 			
-			System.out.println(sb.toString());
+			//System.out.println(sb.toString());
+			parseJSON(sb.toString());
 			
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 	}
+	
+	static void parseJSON(String json) {
+		JSONArray root = new JSONArray(json);
+		//System.out.println(root.length());
+		for (int i = 0; i<root.length(); i++) {
+			JSONObject e = root.getJSONObject(i);
+			String name = e.getString("Name");
+			double lat = e.getDouble("Latitude");
+			double lng = e.getDouble("Longitude");
+			System.out.printf("%s:%f:%f\n", name, lat, lng);
+		}
+		
+		
+		
+	}
+	
+	
+	
 
 }
