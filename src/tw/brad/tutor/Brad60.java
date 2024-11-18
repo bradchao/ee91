@@ -12,7 +12,7 @@ public class Brad60 {
 
 	public static void main(String[] args) {
 		try {
-			URL url = new URL("https://data.moa.gov.tw/Service/OpenData/ODwsv/ODwsvAgriculturalProduce.aspx");
+			URL url = new URL("https://data.moa.gov.tw/Service/OpenData/ODwsv/ODwsvMovingRoad.aspx");
 			HttpURLConnection conn = (HttpURLConnection)url.openConnection();
 			
 			BufferedReader reader = 
@@ -39,8 +39,15 @@ public class Brad60 {
 		for (int i = 0; i<root.length(); i++) {
 			JSONObject e = root.getJSONObject(i);
 			String name = e.getString("Name");
-			double lat = e.getDouble("Latitude");
-			double lng = e.getDouble("Longitude");
+			double lat = 0.0;
+			try {
+				lat = e.getDouble("Latitude");
+			}catch(Exception e1) {
+			}
+			double lng = 0.0;
+			try {
+				lng = e.getDouble("Longitude");
+			}catch(Exception e2) {}
 			System.out.printf("%s:%f:%f\n", name, lat, lng);
 		}
 		
