@@ -4,15 +4,15 @@ import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 
-import tw.brad.apis.GamePanel;
+import tw.brad.apis.GamePanelV2;
 
 public class MyGame extends JFrame{
-	private GamePanel myPanel;
+	private GamePanelV2 myPanel;
 
-	public MyGame() {
+	public MyGame() throws Exception{
 		setLayout(new BorderLayout());
 		
-		myPanel = new GamePanel();
+		myPanel = new GamePanelV2();
 		add(myPanel, BorderLayout.CENTER);
 		
 		setSize(640, 480);
@@ -22,7 +22,12 @@ public class MyGame extends JFrame{
 	
 	
 	public static void main(String[] args) {
-		new MyGame();
+		try {
+			new MyGame();
+		}catch (Exception e) {
+			System.out.println("XXXX");
+		}
+	
 	}
 
 }
