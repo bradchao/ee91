@@ -46,7 +46,11 @@ public class JDBC04 {
 			
 			String sqlDel = "DELETE FROM food";
 			conn.createStatement().executeUpdate(sqlDel);			
-		
+
+			String sqlZero = "ALTER TABLE food AUTO_INCREMENT = 1";
+			conn.createStatement().executeUpdate(sqlZero);			
+
+			
 			String sql = "INSERT INTO food (name,addr,tel,feature,picurl,lat,lng) VALUES (?,?,?,?,?,?,?)";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			
