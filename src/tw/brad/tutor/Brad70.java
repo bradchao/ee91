@@ -53,9 +53,11 @@ public class Brad70 {
 			if (BCrypt.checkpw(passwd, hashPasswd)) {
 				return new Member(rs.getInt("id"), account, hashPasswd, rs.getString("name"));
 			}else {
+				System.out.println("ERR1!");
 				return null;
 			}
 		}else {
+			System.out.println("ERR2!");
 			return null;
 		}
 	}
