@@ -15,7 +15,7 @@ import org.json.JSONObject;
 
 import com.mysql.cj.xdevapi.JsonArray;
 
-public class JDB04 {
+public class JDBC04 {
 
 	public static void main(String[] args) {
 		try {
