@@ -74,5 +74,16 @@ public class FoodDB {
 		}
 	}
 	
+	public void updateData(String newData, int row, int col) {
+		try {
+			rs.absolute(row+1);
+			rs.updateString(col+1, newData);
+			rs.updateRow();
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		
+	}
+	
 
 }

@@ -41,6 +41,19 @@ public class FoodTable extends JTable {
 		public Object getValueAt(int row, int column) {
 			return db.getData(row, column);
 		}
+
+		@Override
+		public boolean isCellEditable(int row, int column) {
+			return column != 0;
+		}
+
+		@Override
+		public void setValueAt(Object aValue, int row, int column) {
+			db.updateData((String)aValue, row, column);
+		}
+		
+		
+		
 		
 	}
 	
